@@ -1,0 +1,32 @@
+nexus must be set up in instance and broswer.
+docker must be set up in instance and broswer.
+in nexus first create the repository Docker("hosted").
+fix to 5000,8085
+
+
+in docker terminal
+
+cd DOCKER/
+ls
+docker images
+sudo vi /etc/docker/daemon.json
+        {
+"insecure-registries":["nexus-public-dns-name:8085"]
+}
+ sudo systemctl restart docker
+ sudo systemctl status docker
+ sudo docker login -u admin nexus-dns-name:8085 -p zelar123
+ docker images
+ cd directory
+ sudo docker  build . -t nexus-dns-name:8085/15onbuild
+ ls
+  cd 01from/
+ sudo docker build . -t  ec2-3-236-181-235.compute-1.amazonaws.com:8085/01from
+  sudo docker push  ec2-3-236-181-235.compute-1.amazonaws.com:8085/01from
+
+cd 13workdir/
+sudo docker build . -t nexus-dns-name:8085/13workdir
+sudo docker push  nexus-dns-name:8085/13workdir
+sudo docker build . -t nexus -public-dns-name:8085/13workdir:v1(tag)
+sudo docker push  nexus-public-dns-name:8085/13workdir:v1
+  
